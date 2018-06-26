@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <title>Exercice 5</title>
+  <script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+  <input type="text" size="30" name="text" value=""></input>
+  <div id="rect"></div>
+</body>
+<script>
+$('input').keydown(function(e) {
+  var move;
+  var maxBorder;
+  var movement;
+  //Assignation des variables en fonction de la touche entrée
+  switch (e.which) {
+    // left movement
+    case 37:
+    move = - 10;
+    maxBorder = $(document).width();
+    movement = 'left';
+    break;
+    // up movement
+    case 39:
+    move = 10;
+    maxBorder = $(document).width();
+    movement = 'left';
+    break;
+    // right movement
+    case 38:
+    move = - 10;
+    maxBorder = $(document).height();
+    movement = 'top';
+    break;
+    // left movement
+    case 40:
+    move = 10;
+    maxBorder = $(document).height();
+    movement = 'top';
+    break;
+    default:
+    break;
+  }
+  //nouvelle position
+  maxBorder = parseInt(posMax);
+  var newPos = parseInt($('#square').css(movement)) + move;
+  //condition de verifiation de bord de page
+  if(move > 0){
+    newPos = (newPos + 50 > maxBorder)? 0 : newPos;
+  } else {
+    newPos = (newPos - 25 < -25)? maxBorder - 50 : newPos;
+  }
+  //nouvelle position si bord de page
+  $('#square').css(direction, newPos + 'px');
+});
+</script>
+</html>
