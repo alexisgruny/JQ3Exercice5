@@ -7,10 +7,11 @@
   <script src="jquery-3.2.1.js"></script>
 </head>
 <body>
-  <input type="text" size="30" name="text" value=""></input>
-  <div id="rect"></div>
+  <input type="text" name="text" value=""></input>
+  <div id="square"></div>
 </body>
 <script>
+$('#square').css('width', '100px').css('height', '100px').css('background-color', 'green').css('left', '0px').css('top', '0px').css('position' , 'fixed');
 $('input').keydown(function(e) {
   var move;
   var maxBorder;
@@ -45,16 +46,16 @@ $('input').keydown(function(e) {
     break;
   }
   //nouvelle position
-  maxBorder = parseInt(posMax);
-  var newPos = parseInt($('#square').css(movement)) + move;
+  maxBorder = parseInt(maxBorder);
+  var newPosition = parseInt($('#square').css(movement)) + move;
   //condition de verifiation de bord de page
   if(move > 0){
-    newPos = (newPos + 50 > maxBorder)? 0 : newPos;
+    newPosition = (newPosition + 50 > maxBorder)? 0 : newPosition;
   } else {
-    newPos = (newPos - 25 < -25)? maxBorder - 50 : newPos;
+    newPosition = (newPosition - 25 < -25)? maxBorder - 50 : newPosition;
   }
   //nouvelle position si bord de page
-  $('#square').css(direction, newPos + 'px');
+  $('#square').css(movement, newPosition + 'px');
 });
 </script>
 </html>
